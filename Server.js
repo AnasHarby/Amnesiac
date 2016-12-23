@@ -18,25 +18,25 @@ app.use(session({
 var arrays;
 app.get('/', function (req, res) {
     if(!req.session.email) {
-        res.sendFile( __dirname + "/projectPH1 23 69/" + "login.html" );
+        res.sendFile( __dirname + "/index.html" );
     }
     else {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+        res.sendFile(__dirname + "/ToDoList.html");
     }
 });
 app.get("/signup", function(req, res) {
     if(!req.session.email) {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "Sign-Up.html" );
+        res.sendFile(__dirname + "/Sign-Up.html" );
     }
     else {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+        res.sendFile(__dirname + "/ToDoList.html");
     }
 });
 app.get("/css/" + "awesome-bootstrap-checkbox.css", function(req, res) {
-    res.sendFile(__dirname + "/projectPH1 23 69/css/" + "awesome-bootstrap-checkbox.css");
+    res.sendFile(__dirname + "/css/" + "awesome-bootstrap-checkbox.css");
 });
 app.get("/js/" + "data.js", function(req, res) {
-    res.sendFile(__dirname + "/projectPH1 23 69/js/" + "data.js");
+    res.sendFile(__dirname + "/js/" + "data.js");
 });
 app.post("/login", function(req, res) {
     if(!req.session.email) {
@@ -63,7 +63,7 @@ app.post("/login", function(req, res) {
             }
             if(loggedIn) {
                 req.session.email = email;
-                res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+                res.sendFile(__dirname + "/ToDoList.html");
                 /**   
                   * fs.readFile(__dirname + "/database/data/" + "user" + req.session.userID + ".json",  'utf8', function (err, data) {
                         if(err) {
@@ -87,12 +87,12 @@ app.post("/login", function(req, res) {
                 }
             }
             else {
-                res.sendFile(__dirname + "/projectPH1 23 69/" + "Login Error.html")
+                res.sendFile(__dirname + "/Login Error.html")
             }
         });
         //console.log(req.session.userName);
     } else {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+        res.sendFile(__dirname + "/ToDoList.html");
     }
 });
 app.post("/register", function(req, res) {
@@ -162,28 +162,28 @@ app.post("/register", function(req, res) {
                         }
                     });
                 });
-                res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html" );
+                res.sendFile(__dirname + "/ToDoList.html" );
             }
             else {
                 if(correctName && correctEmail && !correctPassword) {
-                    res.sendFile(__dirname + "/projectPH1 23 69/" + "Sign-Up Error Password.html");
+                    res.sendFile(__dirname + "/Sign-Up Error Password.html");
                 }
                 else if((!correctEmail || !correctName)) {
-                    res.sendFile(__dirname + "/projectPH1 23 69/" + "Sign-Up Error Email.html");
+                    res.sendFile(__dirname + "/Sign-Up Error Email.html");
                 }
                 else if(emailRegistered) {
-                    res.sendFile(__dirname + "/projectPH1 23 69/" + "Sign-Up Error Already Registered.html");
+                    res.sendFile(__dirname + "/Sign-Up Error Already Registered.html");
                 }
             }
         });
     } else {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+        res.sendFile(__dirname + "/ToDoList.html");
     }
 });
 app.get("/logout", function(req, res) {
     delete req.session.email;
     delete req.session.arrays;
-    res.sendFile( __dirname + "/projectPH1 23 69/" + "login.html" );
+    res.sendFile( __dirname + "/index.html" );
 });
 // Add headers
 app.use(function (req, res, next) {
@@ -221,10 +221,10 @@ app.post('/array', function(req, res) {
 });
 app.get("*", function(req, res){
     if(!req.session.email) {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "login.html");
+        res.sendFile(__dirname + "/index.html");
     }
     else {
-        res.sendFile(__dirname + "/projectPH1 23 69/" + "ToDoList.html");
+        res.sendFile(__dirname + "/ToDoList.html");
     }
 });
 var server = app.listen(8081, function () {
